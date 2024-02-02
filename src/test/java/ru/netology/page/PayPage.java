@@ -11,6 +11,8 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static ru.netology.data.DataGenerator.Date;
+import ru.netology.data.SQLHelper;
+
 
 public class PayPage {
     private SelenideElement buttonPay = $(By.xpath("//span[contains(text(),'Купить')]"));
@@ -67,25 +69,6 @@ public class PayPage {
         fillFormWithData(number, month, year, holder, cvc);
         notificationNOk.shouldBe(visible, Duration.ofSeconds(20)).shouldHave(text(messageNOk));
     }
-
-    public void fillFormWithEmptyAllFieldAndThenValidData(Date dateEmpty, Date dateValid) {
-        fillFormWithData(dateEmpty.getNumber(), dateEmpty.getMonth(), dateEmpty.getYear(), dateEmpty.getHolder(), dateEmpty.getCvc());
-        fieldErrorNumber.shouldBe(visible);
-        fieldErrorMonth.shouldBe(visible);
-        fieldErrorYear.shouldBe(visible);
-        fieldErrorHolder.shouldBe(visible);
-        fieldErrorCVC.shouldBe(visible);
-        fillFormWithData(dateValid.getNumber(), dateValid.getMonth(), dateValid.getYear(), dateValid.getHolder(), dateValid.getCvc());
-        fieldErrorNumber.shouldNot(visible);
-        fieldErrorMonth.shouldNot(visible);
-        fieldErrorYear.shouldNot(visible);
-        fieldErrorHolder.shouldNot(visible);
-        fieldErrorCVC.shouldNot(visible);
-
-
-    }
-
-
 }
 
 

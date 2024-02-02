@@ -1,23 +1,23 @@
 package ru.netology.test;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.junit5.SoftAssertsExtension;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import ru.netology.data.DataGenerator;
+import ru.netology.data.SQLHelper;
 import ru.netology.page.PayPage;
-import ru.netology.page.SQLHelper;
 
-import static com.codeborne.selenide.AssertionMode.SOFT;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
 public class CashTest {
-    @RegisterExtension
-    static SoftAssertsExtension softAsserts = new SoftAssertsExtension();
     PayPage payPage = new PayPage();
     DataGenerator dataGenerator = new DataGenerator();
+
+    @BeforeEach
+    void setUp() {
+        payPage = open("http://localhost:8080", PayPage.class); //перед каждым тестом открывается страница и ей присваивается значение loginPage
+    }
 
     @BeforeEach
     void setup() {
@@ -49,7 +49,7 @@ public class CashTest {
     }
 
     @Test
-    @DisplayName("3 Отказ в кредите на покупку тура «Путешествие дня» при валидном значении заполненных полей формы «Обычная оплата по дебетовой карте» по запрещенной карте")
+    @DisplayName("3 Отказ в  оплате тура «Путешествие дня» при валидном значении заполненных полей формы «Обычная оплата по дебетовой карте» по запрещенной карте")
     void sendRequestWithDeclinedCardInPayForm() {
         payPage.openFormToPayCredit();
         var number = dataGenerator.getDeclinednumberCard();
