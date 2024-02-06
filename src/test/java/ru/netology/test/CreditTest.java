@@ -11,17 +11,12 @@ import ru.netology.page.PayPage;
 import static com.codeborne.selenide.Selenide.open;
 
 public class CreditTest {
-    PayPage payPage = new PayPage();
+    PayPage payPage;
     DataGenerator dataGenerator = new DataGenerator();
 
     @BeforeEach
     void setUp() {
         payPage = open("http://localhost:8080", PayPage.class); //перед каждым тестом открывается страница и ей присваивается значение loginPage
-    }
-
-    @BeforeEach
-    void setup() {
-        open("http://localhost:8080");
     }
 
     @AfterEach

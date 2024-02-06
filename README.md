@@ -27,10 +27,10 @@
 3. В терминале в корне проекта запустить контейнеры:
    docker-compose up -d
 4. Запустить приложение:
-   java -jar .\artifacts\aqa-shop\aqa-shop.jar --spring.datasource.url=jdbc:mysql:////127.0.0.1:3306/app
+   java -jar ./artifacts/aqa-shop.jar -P:jdbc.url=jdbc:mysql://185.119.57.176:3306/app  -port=8080
 5. Открыть второй терминал
 6. Запустить тесты:
-   .\gradlew clean test -DdbUrl=jdbc:mysql://127.0.0.1:3306/app
+   .\gradlew clean test -DdbUrl=jdbc:mysql://185.119.57.176:3306/app
 7. Создать отчёт Allure и открыть в браузере
    .\gradlew allureServe
 8. Закрыть отчёт:
@@ -41,7 +41,7 @@
 11. Остановить контейнеры:
    docker-compose down
    
-db.url=jdbc:mysql://127.0.0.1:3306/app или db.url=jdbc:postgresql://127.0.0.1:5432/app -- адрес и тип тестовой базы данных. Должен совпадать с адресом базы SUT. Обязательный.
+db.url=jdbc:mysql://185.119.57.176:3306/app или db.url=jdbc:postgresql://185.119.57.176:5432/app -- адрес и тип тестовой базы данных. Должен совпадать с адресом базы SUT. Обязательный.
 db.user -- имя пользователя базы данных.  По-умолчанию 'app'
 db.pass -- пароль пользователя базы данных.  По-умолчанию 'pass'
 test.host -- адрес тестируемого хоста. 

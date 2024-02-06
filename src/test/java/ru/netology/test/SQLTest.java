@@ -22,11 +22,6 @@ public class SQLTest {
         payPage = open("http://localhost:8080", PayPage.class); //перед каждым тестом открывается страница и ей присваивается значение loginPage
     }
 
-    @BeforeEach
-    void setup() {
-        open("http://localhost:8080");
-    }
-
     @AfterEach
     void cleanDB() {
         SQLHelper.cleanDatabase();
@@ -35,7 +30,6 @@ public class SQLTest {
     @Test
     @DisplayName("1 Успешная оплата тура «Путешествие дня» при валидном значении заполненных полей формы «Обычная оплата по дебетовой карте» по разрешенной банковской карте (номер карты заполнен с пробелами после каждых 4 символов)(переход к форме через кнопку 'Купить' и получение ответа из базы SQL")
     void shouldConfirmPayWithApprovedCard() {
-        Configuration.assertionMode = SOFT;
         payPage.openFormToPay();
         var number = dataGenerator.getApprovednumberCard();
         var month = DataGenerator.getMonthCard(DataGenerator.generateValidDateCard());
@@ -47,13 +41,11 @@ public class SQLTest {
         String actual = SQLHelper.getStatusFromPayment();
         String expected = dataGenerator.getApproved();
         assertEquals(expected, actual);
-
     }
 
     @Test
     @DisplayName("2 Успешная оплата в кредит тура «Путешествие дня» при валидном значении заполненных полей формы «Купить в кредит» по разрешенной банковской карте (номер карты заполнен с пробелами после каждых 4 символов)(переход к форме через кнопку 'Купить в кредит' и  получение ответа из базы SQL")
     void shouldConfirmPayWithApprovedCreditCard() {
-        Configuration.assertionMode = SOFT;
         payPage.openFormToPayCredit();
         var number = dataGenerator.getApprovednumberCard();
         var month = DataGenerator.getMonthCard(DataGenerator.generateValidDateCard());
@@ -70,7 +62,6 @@ public class SQLTest {
     @Test
     @DisplayName("3 Отказ в оплате тура «Путешествие дня» при валидном значении заполненных полей формы «Обычная оплата по дебетовой карте» по запрещенной карте  (переход к форме через кнопку 'Купить' и получение ответа из базы SQL")
     void shouldConfirmPayWithDeclinedCard() {
-        Configuration.assertionMode = SOFT;
         payPage.openFormToPay();
         var number = dataGenerator.getDeclinednumberCard();
         var month = DataGenerator.getMonthCard(DataGenerator.generateValidDateCard());
@@ -86,7 +77,6 @@ public class SQLTest {
     @Test
     @DisplayName("4 Отказ в кредите на покупку тура «Путешествие дня» при валидном значении заполненных полей формы «Купить в кредит» по запрещенной карте (номер карты заполнен с пробелами после каждых 4 символов).  (Переход к форме через кнопку 'Купить в кредит' и получение ответа из базы SQL")
     void shouldConfirmPayWithDeclinedCreditCard() {
-        Configuration.assertionMode = SOFT;
         payPage.openFormToPayCredit();
         var number = dataGenerator.getDeclinednumberCard();
         var month = DataGenerator.getMonthCard(DataGenerator.generateValidDateCard());

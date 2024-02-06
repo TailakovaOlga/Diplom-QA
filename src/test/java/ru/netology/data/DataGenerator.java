@@ -50,7 +50,6 @@ public class DataGenerator {
             int third = new Random().ints(1_000, 9999).findFirst().getAsInt();
             int fourth = new Random().ints(1_000, 9999).findFirst().getAsInt();
             return String.valueOf(first) + String.valueOf(second) + String.valueOf(third) + String.valueOf(fourth);
-
         }
 
         public static String generateCardWith17SymbolAtBeginning(String approvednumberCard) {
@@ -75,12 +74,11 @@ public class DataGenerator {
 
         public static String generateCardWith16InvalidSymbol(List<String> list) {
             return (String.join("", list)).substring(0, 16);
-
         }
 
         public static String generateCardLess16Symbol() {
             String cardNumber16Symbol = new Faker().finance().creditCard(CreditCardType.VISA);
-            int lenghtCard = new Random().nextInt(14) + 1;
+            int lenghtCard = new Random().nextInt(16);
             return cardNumber16Symbol.substring(0, lenghtCard);
         }
 

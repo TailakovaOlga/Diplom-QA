@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'io.qameta.allure' version '2.9.6'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group 'ru.netology'
@@ -43,6 +43,7 @@ dependencies {
     implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
     implementation group: 'io.qameta.allure', name: 'allure-selenide', version: '2.18.1'
 
+    testImplementation 'io.qameta.allure:allure-selenide:2.18.1'
     testImplementation 'mysql:mysql-connector-java:8.0.18'
     testImplementation 'org.testcontainers:postgresql:1.17.3'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
