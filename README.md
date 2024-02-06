@@ -3,13 +3,13 @@
 
 1. Запустить Docker 
 2. Открыть проект в IntelliJ IDEA
-3. В терминале в корне проекта запустить контейнеры:
+3. Запустить контейнеры:
    docker-compose up -d
 4. Запустить приложение:
-   java -jar .\artifacts\aqa-shop\aqa-shop.jar --spring.datasource.url=jdbc:postgresql://127.0.0.1:5432/app
+   java -jar ./artifacts/aqa-shop.jar -P:.:jdbc.url=jdbc:postgresql://185.119.57.176:5432/app
 5. Открыть второй терминал
 6. Запустить тесты:
-   .\gradlew clean test -DdbUrl=jdbc:postgresql://127.0.0.1:5432/app
+   .\gradlew clean test -DdbUrl=jdbc:postgresql://185.119.57.176:5432/app
 7. Создать отчёт Allure и открыть в браузере
    .\gradlew allureServe
 8. Закрыть отчёт:
