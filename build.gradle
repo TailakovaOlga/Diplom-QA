@@ -25,8 +25,8 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.6.1'
     testImplementation 'org.slf4j:slf4j-simple:1.7.32'
 
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
-    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+    testCompileOnly 'org.projectlombok:lombok:1.18.28'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
 
     testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
     testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
@@ -48,6 +48,13 @@ dependencies {
     testImplementation 'org.testcontainers:postgresql:1.17.3'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
     testImplementation 'junit:junit:3.8.2'
+
+    testImplementation 'com.codeborne:selenide:6.17.1'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'io.rest-assured:rest-assured:4.3.0'
+    testImplementation 'com.google.code.gson:gson:2.9.0'
+
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.1'
 }
 
 test {
@@ -55,4 +62,6 @@ test {
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
     systemProperty 'dbUrl', System.getProperty('dbUrl')
+    systemProperty 'user', System.getProperty('user', 'app')
+    systemProperty 'password', System.getProperty('password', 'pass')
 }

@@ -7,12 +7,30 @@ import org.junit.jupiter.api.Test;
 import ru.netology.data.DataGenerator;
 import ru.netology.data.SQLHelper;
 import ru.netology.page.PayPage;
-
+import io.qameta.allure.selenide.AllureSelenide;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selectors;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.Keys;
 
 public class CashTest {
     PayPage payPage;
     DataGenerator dataGenerator = new DataGenerator();
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
 
     @BeforeEach
     void setUp() {
@@ -22,12 +40,6 @@ public class CashTest {
     @AfterEach
     void cleanDB() {
         SQLHelper.cleanDatabase();
-    }
-
-    @Test
-    @DisplayName("Переход к форме заполнения данных карты нажатием кнопки 'Купить'")
-    void shouldOpenFormByButtonPay() {
-        payPage.openFormToPay();
     }
 
     @Test

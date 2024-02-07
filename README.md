@@ -6,12 +6,15 @@
 3. Запустить контейнеры:
    docker-compose up -d
 4. Запустить приложение:
-   java -jar ./artifacts/aqa-shop.jar -P:.:jdbc.url=jdbc:postgresql://185.119.57.176:5432/app
+
+   java -jar ./artifacts/aqa-shop.jar -Dspring.datasource.url=jdbc:mysql://185.119.57.176:5432/app
+   
+  
 5. Открыть второй терминал
 6. Запустить тесты:
-   .\gradlew clean test -DdbUrl=jdbc:postgresql://185.119.57.176:5432/app
+   ./gradlew clean test -DdbUrl=jdbc:postgresql://185.119.57.176:5432/app
 7. Создать отчёт Allure и открыть в браузере
-   .\gradlew allureServe
+   ./gradlew allureServe
 8. Закрыть отчёт:
    CTRL + C -> y -> Enter
 9. Перейти в  терминал
@@ -27,12 +30,14 @@
 3. В терминале в корне проекта запустить контейнеры:
    docker-compose up -d
 4. Запустить приложение:
-   java -jar ./artifacts/aqa-shop.jar -P:jdbc.url=jdbc:mysql://185.119.57.176:3306/app  -port=8080
+   
+   java -jar ./artifacts/aqa-shop.jar -Dspring.datasource.url=jdbc:mysql://185.119.57.176:3306/app
+ 
 5. Открыть второй терминал
 6. Запустить тесты:
-   .\gradlew clean test -DdbUrl=jdbc:mysql://185.119.57.176:3306/app
+   ./gradlew clean test -DdbUrl=jdbc:mysql://185.119.57.176:3306/app
 7. Создать отчёт Allure и открыть в браузере
-   .\gradlew allureServe
+   ./gradlew allureServe
 8. Закрыть отчёт:
    CTRL + C -> y -> Enter
 9. Перейти в первый терминал

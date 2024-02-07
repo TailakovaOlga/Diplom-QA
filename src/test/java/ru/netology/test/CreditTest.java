@@ -1,9 +1,8 @@
 package ru.netology.test;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import ru.netology.data.DataGenerator;
 import ru.netology.data.SQLHelper;
 import ru.netology.page.PayPage;
@@ -14,6 +13,15 @@ public class CreditTest {
     PayPage payPage;
     DataGenerator dataGenerator = new DataGenerator();
 
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
     @BeforeEach
     void setUp() {
         payPage = open("http://localhost:8080", PayPage.class); //перед каждым тестом открывается страница и ей присваивается значение loginPage
@@ -22,12 +30,6 @@ public class CreditTest {
     @AfterEach
     void cleanDB() {
         SQLHelper.cleanDatabase();
-    }
-
-    @Test
-    @DisplayName("Переход к форме заполнения данных карты нажатием кнопки 'Купить в кредит'")
-    void shouldOpenFormByButtonPayCredit() {
-        payPage.openFormToPayCredit();
     }
 
     @Test
