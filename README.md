@@ -7,8 +7,7 @@
    docker-compose up -d
 4. Запустить приложение:
 
-   java -jar ./artifacts/aqa-shop.jar -Dspring.datasource.url=jdbc:mysql://185.119.57.176:5432/app
-   
+  java -Dspring.datasource.url=jdbc:postgresql://185.119.57.176:5432/app -jar artifacts/aqa-shop.jar
   
 5. Открыть второй терминал
 6. Запустить тесты:
@@ -31,7 +30,7 @@
    docker-compose up -d
 4. Запустить приложение:
    
-   java -jar ./artifacts/aqa-shop.jar -Dspring.datasource.url=jdbc:mysql://185.119.57.176:3306/app
+  java -Dspring.datasource.url=jdbc:mysql://185.119.57.176:3306/app -jar artifacts/aqa-shop.jar
  
 5. Открыть второй терминал
 6. Запустить тесты:

@@ -64,4 +64,7 @@ test {
     systemProperty 'dbUrl', System.getProperty('dbUrl')
     systemProperty 'user', System.getProperty('user', 'app')
     systemProperty 'password', System.getProperty('password', 'pass')
+    systemProperty 'dbUrl', System.getProperty('dbUrl','jdbc:mysql://185.119.57.176:3306/app')
+    //systemProperty 'dbUrl', System.getProperty('dbUrl','jdbc:postgresql://185.119.57.176./gradlew clean test -D:db.url=jdbc:mysql://185.119.57.172:3306/ap
+    // :5432/app')
 }
