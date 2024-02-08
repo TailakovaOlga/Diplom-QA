@@ -22,4 +22,7 @@
 
 4. Кнопки "Купить" и "Купить в кредит" при нажатии должны изменять цвет, означающий активность выбранного способа оплаты;
   
- 
+### **5.Скриншоты Allure**
+ ![1](https://github.com/TailakovaOlga/Diplom-QA/assets/142083950/6cf2629b-316a-40bf-bcb1-2811c36d4a6a)
+ ![2](https://github.com/TailakovaOlga/Diplom-QA/assets/142083950/50af5cbe-0fdf-4fc3-a521-45738f55dfab)
+ ![3](https://github.com/TailakovaOlga/Diplom-QA/assets/142083950/f6a65a2b-1271-4ed3-b29b-f8bc38f3e83a)
